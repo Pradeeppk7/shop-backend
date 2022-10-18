@@ -1,0 +1,23 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "backend of the shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pradeep",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^2.7.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Pradeeppk7/shop-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pradeeppk7/shop-backend/issues"
+  },
+  "homepage": "https://github.com/Pradeeppk7/shop-backend#readme"
+}
