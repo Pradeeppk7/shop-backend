@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
-app.get('/', (req, res) => {
+
+require('dotenv/config');
+
+const api = process.env.API_URL;
+app.get(api+'/products', (req, res) => {
     res.send('hello API !');
 })
 app.listen(3000, () => {
+    console.log(api);
     console.log('sever is running');
 })
