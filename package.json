@@ -4,14 +4,15 @@
   "description": "backend of the shop",
   "main": "index.js",
   "scripts": {
+    "start":"nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pradeep",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Pradeeppk7/shop-backend.git"
