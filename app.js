@@ -1,25 +1,33 @@
-const express = require(
-    "express");
+const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 require("dotenv/config");
-const api = process.env.API_URL;
 
-const productsRouter = require('./routers/products');
+app.use(cors());
+app.options('*',cors())
+
 //middleware
 //app.use(express.json());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
-//routers
-app.use(`${api}/products`,productsRouter)
+//routes
+const categoriesRoutes = require('./routes/categories');
+const productsRouter = require('./routes/products');
+const usersRoutes = require('./routes/users');
+const ordersRoutes = require('./routes/orders');
 
+const api = process.env.API_URL;
 
+app.use(`${api}/categories`, categoriesRoutes);
+app.use(`${api}/products`, productsRouter);
+app.use(`${api}/users`, usersRoutes);
+app.use(`${api}/orders`, ordersRoutes);
 
-
+//database
 mongoose.connect(process.env.CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,7 +37,9 @@ mongoose.connect(process.env.CONNECTION_STRING, {
 }).catch((err) => {
     console.log(err);
 })
+
+//server
 app.listen(3000, () => {
-    console.log(api);
-    console.log('sever is running');
+    
+    console.log('server is running http://localhost:3000');
 })
