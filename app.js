@@ -17,6 +17,7 @@ app.options('*', cors())
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(authJwt());
+app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(errorHandler);
 
 //Routes
@@ -38,8 +39,9 @@ mongoose.connect(process.env.CONNECTION_STRING, {
     useUnifiedTopology: true,
     dbName: process.env.DB_NAME
 })
-.then(()=>{
-    console.log('Database Connection is ready...')
+    .then(() => {
+        console.log('we are using ' + process.env.DB_NAME);
+        console.log('Database Connection is ready...')
 })
 .catch((err)=> {
     console.log(err);
